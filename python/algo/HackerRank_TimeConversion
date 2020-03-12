@@ -1,0 +1,46 @@
+## 해커랭크 TIME Conversion 문제
+#!/bin/python3
+#!/bin/python3
+
+import os
+import sys
+
+#
+# Complete the timeConversion function below.
+#
+def timeConversion(s):
+    #
+    # Write your code here.
+    #
+
+    time =0
+    if 'PM' in (s) :  ## PM 일경구
+        time = abs(int(s[0:2]) +12)
+        if(s[0:2] == '12') :
+            time =12
+        s = s.replace(s[0:2], str(time))
+        return(s[0:-2].zfill(8))
+    
+    else :
+        if( int(s[0:2]) < 12):  ## 12시 이전 값들은 동일하게
+            time = int(s[0:2])
+
+        else :  ## 12시가 넘어가게되면 12를 빼줌
+            time = abs(int(s[0:2]) -12)
+
+        if(s[0:2] == '12') :
+            time = str(00)
+        s =s.replace(s[0:2], str(time))
+    
+        return(s[0:-2].zfill(8))  ## 8자리로 고정 
+
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    f.write(result + '\n')
+
+    f.close()

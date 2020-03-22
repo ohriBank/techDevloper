@@ -1,0 +1,87 @@
+#!/bin/python3
+
+ 
+
+import math
+
+import os
+
+import random
+
+import re
+
+import sys
+
+ 
+
+# Complete the breakingRecords function below.
+
+def breakingRecords(scores):
+
+    hs = 0
+
+    ls =0
+
+    hs_count =0
+
+    ls_count =0
+
+ 
+
+    length = len(scores) -1
+
+ 
+
+    ls = scores[0]
+
+    hs = scores[0]
+
+    print(ls, hs)
+
+ 
+
+    for i in range(len(scores)) :
+
+        if( hs < scores[i]) :
+
+            hs = scores[i]
+
+            hs_count +=1
+
+        if(ls > scores[i]) :
+
+            ls =scores[i]
+
+            ls_count +=1
+
+ 
+
+    return  hs_count, ls_count
+
+ 
+
+if __name__ == '__main__':
+
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+ 
+
+    n = int(input())
+
+ 
+
+    scores = list(map(int, input().rstrip().split()))
+
+ 
+
+    result = breakingRecords(scores)
+
+ 
+
+    fptr.write(' '.join(map(str, result)))
+
+    fptr.write('\n')
+
+ 
+
+    fptr.close()

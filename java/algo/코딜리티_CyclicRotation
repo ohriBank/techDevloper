@@ -1,0 +1,43 @@
+1.입력값 배열, 오른쪽 Rotation 횟수
+
+2.오른쪽으로 Rotation 횟수를 인덱스화하여 계산
+
+3.배열을 선언할때 Parameter로 받아쓰면 reference call 되므로 유의
+
+4. index 개념을 활용하자
+
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // write your code in Java SE 8
+        
+        // 인덱스 계산
+        
+        //int [] rotationA = A; // reference call 로 값이 변함
+        int[] rotationA = new int[A.length]; // 새롭게 선언
+        int index = 0;
+        
+        for (int i =0; i < A.length; i++){
+        
+            if(  i +K >= A.length){
+                
+               index= (i+K)%A.length;
+            }else{
+                index = i+K;
+            }
+          //  System.out.println(i +" , " +index + " , " + A[i]);
+            rotationA[index] = A[i];
+            
+            
+        }
+        
+        return rotationA;
+        
+    }
+}

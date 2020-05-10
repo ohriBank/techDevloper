@@ -1,0 +1,50 @@
+1. 배열 값이 주어지고
+
+2. p 값에 따라 0~ p 까지 p +1 ~n 까지의 합을 구한후 서로 빼줌
+
+3. 이중 for문을 걸지 않게 유의
+
+ 
+
+// you can also use imports, for example:
+ import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        // write your code in Java SE 8
+        
+        int [] prefix_sum = new int[A.length];
+        
+        int sum = 0;
+        int min = Integer.MAX_VALUE;
+        
+       // long totSum = Arrays.stream(A).sum(); 
+        long totSum =0;
+        for(int i : A)  totSum += i;
+        int sumArray =(int)totSum;
+        for (int i=0; i < A.length -1; i++){
+            
+            sum += A[i];
+            sumArray -=A[i];
+
+            if(min > Math.abs ((sumArray -sum))){
+                min = Math.abs (sumArray -sum);
+            }
+            
+          //  System.out.println(i +" @ " + sumArray + " !" + sum)    ;
+        }
+        
+        
+        /*
+        p=1 a[0] -  a[1] ~ a[n-1]
+        p2  a[0]+ a[1 ] - a[2] ~ a[n-2]
+        
+        */
+        
+        
+        return min;
+    }
+}

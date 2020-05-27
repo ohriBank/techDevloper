@@ -1,0 +1,44 @@
+1. 입력갑 배열 2개
+
+2. 전체 명단, 완주한 명단이 주어진다
+
+3. 2개의 명단에서 중복되는 값이 있기 때문에 key, value 개념을 활용하기 위하여 hash map을 구현하여 풀이
+
+import java.util.HashMap;
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+
+        HashMap<String,Integer> map = new HashMap();
+		
+        System.out.println("Start" );
+        int val =0;  
+        for (String part : participant){
+
+            if(map.get(part) == null){
+
+                map.put(part, 1);
+
+            }else{
+
+                val  = map.get(part) +1;
+                map.put(part,val);
+
+            }
+
+        }
+
+        for(String comp : completion){
+            val = map.get(comp) -1;
+            map.put(comp, val);
+
+        }
+
+        for(String key : map.keySet()){
+            if(map.get(key) ==1) answer = key;
+
+        }
+
+        return answer;
+    }
+}
